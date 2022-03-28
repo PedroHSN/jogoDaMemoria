@@ -24,7 +24,7 @@ function createCardsFromTechs(techs) {
 
   console.log(cards.flatMap(pair => pair));
 }
-
+ 
 function createPairFromTech(tech){
 
     return [{
