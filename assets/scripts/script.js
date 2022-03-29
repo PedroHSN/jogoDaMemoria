@@ -12,6 +12,29 @@ let techs = ['bootstrap', //os tipos de cartas
 'node',
 'react'];
 
+let cards = null;
+
+startGame();
+
+function startGame(){
+  cards = createCardsFromTechs(techs);
+  shuffleCards(cards);
+  console.log(cards);
+}
+
+function shuffleCards(cards){
+  let currentIndex = cards.length;
+  let randomIndex = 0;
+
+  while(currentIndex !== 0){
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
+  }
+}
+
+
 createCardsFromTechs(techs);
 
 function createCardsFromTechs(techs) { //para cada uma das techs, uma carta sera criada
@@ -22,7 +45,7 @@ function createCardsFromTechs(techs) { //para cada uma das techs, uma carta sera
     cards.push(createPairFromTech(tech));
   }
 
-  return console.log(cards.flatMap(pair => pair)); //retorna um array, flatMap separa os itens de um array e retorna para o principal.
+  return cards.flatMap(pair => pair); //retorna um array, flatMap separa os itens de um array e retorna para apenas um unico array.
 }
  
 function createPairFromTech(tech){ // cria array com as cartas
