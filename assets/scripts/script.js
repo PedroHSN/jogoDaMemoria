@@ -11,7 +11,7 @@ function startGame(){ //Cria as cartas e armazena dentro de cards.
   initializeCards(game.createCardsFromTechs());//pega os modelos e transforma algo em visual.
 }
 
-function initializeCards(cards){
+function initializeCards(){
   let gameBoard = document.getElementById("gameBoard") 
 
   game.cards.forEach(card => { //para cada uma das cartas vai ser criado um elemento
@@ -49,5 +49,23 @@ function createCardFace(face, card, element){
 }
 
 function flipCard(){
-  this.classList.add("flip");
+
+  if(game.setCard(this.id)){
+      this.classList.add("flip");
+      if(game.secondCard){
+          if(game.checkMatch()){
+            game.clearCards();
+        }else{
+          setTimeout(() => {
+            let firstCardView = document.getElementById(game.firstCard.id);
+            let secondCardView = document.getElementById(game.secondCard.id);
+    
+            firstCardView.classList.remove('flip');
+            secondCardView.classList.remove('flip');
+            game.unflipCards();
+          }, 1000);
+        }
+      }
+      
+  }
 }
