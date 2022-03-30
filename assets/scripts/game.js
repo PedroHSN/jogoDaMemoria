@@ -4,6 +4,19 @@ let game = {
   firstCard: null,
   secondCard: null,
 
+  techs :['bootstrap', //os tipos de cartas
+      'css',
+      'electron',
+      'html',
+      'firebase',
+      'javascript',
+      'jquery',
+      'mongo',
+      'node',
+      'react'],
+
+  cards: null,
+
   setCard: function(id){
        
     let card =  this.cards.filter(card => card.id === id)[0];
@@ -43,18 +56,9 @@ let game = {
     this.clearCards();
   },
 
-  techs :['bootstrap', //os tipos de cartas
-      'css',
-      'electron',
-      'html',
-      'firebase',
-      'javascript',
-      'jquery',
-      'mongo',
-      'node',
-      'react'],
-
-  cards: null,
+  checkGameOver: function(){// checa se as cartas não estão flipadas, retornando true;
+    return this.cards.filter(card=> !card.flipped).length == 0; 
+  },
 
   createCardsFromTechs: function() { //para cada uma das techs, uma carta sera criada
 

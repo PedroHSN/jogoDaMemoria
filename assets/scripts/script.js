@@ -14,6 +14,7 @@ function startGame(){ //Cria as cartas e armazena dentro de cards.
 function initializeCards(){
   let gameBoard = document.getElementById("gameBoard") 
 
+  gameBoard.innerHTML = ''; // limpar o gameboard para poder rodar outro jogo novamente.
   game.cards.forEach(card => { //para cada uma das cartas vai ser criado um elemento
 
         let cardElement = document.createElement('div');
@@ -55,6 +56,10 @@ function flipCard(){
       if(game.secondCard){
           if(game.checkMatch()){
             game.clearCards();
+            if(game.checkGameOver()){
+              let gameOverLadyer = document.getElementById("gameOver");
+              gameOverLadyer.style.display = 'flex';
+            }
         }else{
           setTimeout(() => {
             let firstCardView = document.getElementById(game.firstCard.id);
@@ -68,4 +73,11 @@ function flipCard(){
       }
       
   }
+}
+
+function restart(){
+  game.clearCards();
+  startGame();
+  let gameOverLadyer = document.getElementById("gameOver");
+  gameOverLadyer.style.display = 'none';
 }
