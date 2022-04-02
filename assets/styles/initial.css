@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dark{
+  background-color: #142741;
+  color: white;
+}
+.light{
+  background-color: #fff;
+}
+
+.toggle {
+  position: relative;
+}
+
+.toggle > input {
+  display: none;
+}
