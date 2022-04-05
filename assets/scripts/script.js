@@ -102,3 +102,15 @@ function emojicon(){
     
   }
 }
+
+function countCalculator() {
+  let cardFlip = document.getElementById(this.classList)
+
+  if (cardFlip != "flip") {
+      count++
+  }
+  document.getElementById("mov")
+  mov.innerHTML = `movements: ${count}`
+
+  return count
+}

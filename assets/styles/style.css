@@ -79,3 +79,9 @@ body{
   gap: 20px;
 }
 
+#result {
+  font-size: 40px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
