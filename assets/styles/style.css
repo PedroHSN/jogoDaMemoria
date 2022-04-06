@@ -32,6 +32,7 @@ body{
   border-radius: 20px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
   backface-visibility: hidden;
+  cursor: pointer; 
 }
 
 .flip{
@@ -79,9 +80,47 @@ body{
   gap: 20px;
 }
 
-#result {
+#mov {
   font-size: 40px;
   position: absolute;
   left: 10px;
   bottom: 10px;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+.icon:hover {
+  width: 115px;
+  height: 115px;
+  
+}
+
+@media(max-width:600px) {
+  
+  .card {
+      width: 80px;
+      height: 80px;
+  }
+  .icon {
+      width: 60px;
+      height: 60px;
+  }
+  .icon:hover {
+      width: 75px;
+      height: 75px;
+  }
+  #gameBoard {
+      max-width: 400px;
+      grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+      gap: 15px;
+      position: absolute;
+      top: 120px;
+      justify-content: center;
+  }
+  #gameOver {
+      text-align: center;
+  }
 }
