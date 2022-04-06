@@ -2,6 +2,7 @@ const FRONT = "card_front";
 const BACK = "card_back";
 const CARD = "card";
 const ICON = "icon";
+let count = 0;
 
 
 
@@ -13,7 +14,11 @@ function startGame(){ //Cria as cartas e armazena dentro de cards.
 }
 
 function initializeCards(){
-  let gameBoard = document.getElementById("gameBoard") 
+  let gameBoard = document.getElementById("gameBoard");
+  let mov = document.getElementById("mov");
+      count = 0;
+
+      mov.innerHTML = "Movimentos: 0"
 
   gameBoard.innerHTML = ''; // limpar o gameboard para poder rodar outro jogo novamente.
   game.cards.forEach(card => { //para cada uma das cartas vai ser criado um elemento
@@ -54,12 +59,16 @@ function flipCard(){
 
   if(game.setCard(this.id)){
       this.classList.add("flip");
+      countCalculator()
       if(game.secondCard){
           if(game.checkMatch()){
             game.clearCards();
             if(game.checkGameOver()){
-              let gameOverLadyer = document.getElementById("gameOver");
-              gameOverLadyer.style.display = 'flex';
+              let gameOverLayer = document.getElementById("gameOver");
+              let result = document.getElementById("result")
+
+                  gameOverLayer.style.display = 'flex';
+                  result.innerHTML = "total movements= " + countCalculator()
             }
         }else{
           setTimeout(() => {
@@ -79,8 +88,8 @@ function flipCard(){
 function restart(){
   game.clearCards();
   startGame();
-  let gameOverLadyer = document.getElementById("gameOver");
-  gameOverLadyer.style.display = 'none';
+  let gameOverLayer = document.getElementById("gameOver");
+  gameOverLayer.style.display = 'none';
 }
 
 function emojicon(){
@@ -106,11 +115,12 @@ function emojicon(){
 function countCalculator() {
   let cardFlip = document.getElementById(this.classList)
 
-  if (cardFlip != "flip") {
-      count++
+  if (cardFlip != "flipCard") {
+       count++;
   }
+  
   document.getElementById("mov")
-  mov.innerHTML = `movements: ${count}`
+  mov.innerHTML = `Movimentos: ${count}`
 
-  return count
+  return count;
 }
